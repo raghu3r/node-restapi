@@ -10,5 +10,6 @@ module.exports = {
   },
   rules: {
     'comma-dangle': 0,
+    'linebreak-style': ['error', 'windows'],
   },
 };
