@@ -11,7 +11,6 @@ function routes(Book) {
       return res.status(201).json(book);
     })
     .get((req, res) => {
-      // const response = { hello: 'This is my get API' };
       const query = {};
       if (req.query.genre) {
         query.genre = req.query.genre;
@@ -24,7 +23,7 @@ function routes(Book) {
       });
     });
 
-  bookRouter.use('/book/:bookId', (req, res, next) => {
+  bookRouter.use('/books/:bookId', (req, res, next) => {
     Book.findById(req.params.bookId, (err, book) => {
       if (err) {
         return res.send(err);

@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 // connecting to MongoDB
-const db = mongoose.connect('mongodb://localhost/bookAPI');
+const db = mongoose.connect('mongodb://localhost/bookAPI', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const port = process.env.PORT || 3000;
 
