@@ -12,4 +12,5 @@ module.exports = {
     'comma-dangle': 0,
     'linebreak-style': ['error', 'windows'],
   },
+  env: { node: true, mocha: true },
 };
