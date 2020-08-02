@@ -3,11 +3,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-// connecting to MongoDB
-const db = mongoose.connect('mongodb://localhost/bookAPI', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+if (process.env.ENV === 'Test') {
+  const db = mongoose.connect('mongodb://localhost/bookAPI_Test');
+} else {
+  // connecting to MongoDB
+  const db = mongoose.connect('mongodb://localhost/bookAPI', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 const port = process.env.PORT || 3000;
 
@@ -23,6 +28,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to Rest & Nodemon API');
 });
 
-app.listen(port, () => {
+app.server = app.listen(port, () => {
   console.log(`Running on Port ${port}`);
 });
+
+module.exports = app;
